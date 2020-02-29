@@ -81,6 +81,12 @@ MiniPiano.Game = function (game)
 	this.buttonSI = null;
 
 	this.buttonDO_SOST = null;
+	this.buttonRE_SOST = null;
+	this.buttonMI_SOST = null;
+	this.buttonFA_SOST = null;
+	this.buttonSOL_SOST = null;
+	this.buttonLA_SOST = null;
+	this.buttonSI_SOST = null;
 
 	this.myMusicPlayer = null;
 
