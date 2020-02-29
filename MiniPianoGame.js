@@ -136,6 +136,9 @@ MiniPiano.Game.prototype = {
 		// Setting the background image
 		game.stage.backgroundColor = "#4488AA";
 
+		game.input.onTap.addOnce(game.sound.context.resume, game.sound.context);
+		game.input.onDown.addOnce(game.sound.context.resume, game.sound.context);
+
 		this.buttonDO = this.add.button(0, 0, "imageKey1", null, this, 2, 1, 0);
 		this.buttonDO.onInputOver.add(this.playAudioDO, this);
 		this.buttonDO.onInputDown.add(this.playAudioDO, this);
