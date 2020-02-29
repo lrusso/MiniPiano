@@ -80,6 +80,14 @@ MiniPiano.Game = function (game)
 	this.buttonLA = null;
 	this.buttonSI = null;
 
+	this.buttonDOOut = true;
+	this.buttonREOut = true;
+	this.buttonMIOut = true;
+	this.buttonFAOut = true;
+	this.buttonSOLOut = true;
+	this.buttonLAOut = true;
+	this.buttonSIOut = true;
+
 	this.buttonDO_SOST = null;
 	this.buttonRE_SOST = null;
 	this.buttonMI_SOST = null;
@@ -87,6 +95,14 @@ MiniPiano.Game = function (game)
 	this.buttonSOL_SOST = null;
 	this.buttonLA_SOST = null;
 	this.buttonSI_SOST = null;
+
+	this.buttonDO_SOSTOut = true;
+	this.buttonRE_SOSTOut = true;
+	this.buttonMI_SOSTOut = true;
+	this.buttonFA_SOSTOut = true;
+	this.buttonSOL_SOSTOut = true;
+	this.buttonLA_SOSTOut = true;
+	this.buttonSI_SOSTOut = true;
 
 	this.myMusicPlayer = null;
 
@@ -115,19 +131,19 @@ MiniPiano.Game.prototype = {
 		{
 		if(game.input.activePointer.isUp==true)
 			{
-			this.playAudioDOHoverOut();
-			this.playAudioREHoverOut();
-			this.playAudioMIHoverOut();
-			this.playAudioFAHoverOut();
-			this.playAudioSOLHoverOut();
-			this.playAudioLAHoverOut();
-			this.playAudioSIHoverOut();
+			if (this.buttonDOOut==true){this.playAudioDOHoverOut()}
+			if (this.buttonREOut==true){this.playAudioREHoverOut()}
+			if (this.buttonMIOut==true){this.playAudioMIHoverOut()}
+			if (this.buttonFAOut==true){this.playAudioFAHoverOut()}
+			if (this.buttonSOLOut==true){this.playAudioSOLHoverOut()}
+			if (this.buttonLAOut==true){this.playAudioLAHoverOut()}
+			if (this.buttonSIOut==true){this.playAudioSIHoverOut()}
 
-			this.playAudioDO_SOSTHoverOut();
-			this.playAudioRE_SOSTHoverOut();
-			this.playAudioFA_SOSTHoverOut();
-			this.playAudioSOL_SOSTHoverOut();
-			this.playAudioLA_SOSTHoverOut();
+			if (this.buttonDO_SOSTOut==true){this.playAudioDO_SOSTHoverOut()}
+			if (this.buttonRE_SOSTOut==true){this.playAudioRE_SOSTHoverOut()}
+			if (this.buttonFA_SOSTOut==true){this.playAudioFA_SOSTHoverOut()}
+			if (this.buttonSOL_SOSTOut==true){this.playAudioSOL_SOSTHoverOut()}
+			if (this.buttonLA_SOSTOut==true){this.playAudioLA_SOSTHoverOut()}
 			}
 		},
 
@@ -142,73 +158,85 @@ MiniPiano.Game.prototype = {
 		this.buttonDO = this.add.button(0, 0, "imageKey1", null, this, 2, 1, 0);
 		this.buttonDO.input.pixelPerfectOver = true;
 		this.buttonDO.onInputOver.add(this.playAudioDO, this);
-		this.buttonDO.onInputDown.add(this.playAudioDO, this);
+		this.buttonDO.onInputDown.add(this.playAudioDODown, this);
+		this.buttonDO.onInputUp.add(this.playAudioDOHoverOut, this);
 		this.buttonDO.onInputOut.add(this.playAudioDOHoverOut, this);
 
 		this.buttonRE = this.add.button(85, 0, "imageKey2", null, this, 2, 1, 0);
 		this.buttonRE.input.pixelPerfectOver = true;
 		this.buttonRE.onInputOver.add(this.playAudioRE, this);
-		this.buttonRE.onInputDown.add(this.playAudioRE, this);
+		this.buttonRE.onInputDown.add(this.playAudioREDown, this);
+		this.buttonRE.onInputUp.add(this.playAudioREHoverOut, this);
 		this.buttonRE.onInputOut.add(this.playAudioREHoverOut, this);
 
 		this.buttonMI = this.add.button(171, 0, "imageKey4", null, this, 2, 1, 0);
 		this.buttonMI.input.pixelPerfectOver = true;
 		this.buttonMI.onInputOver.add(this.playAudioMI, this);
-		this.buttonMI.onInputDown.add(this.playAudioMI, this);
+		this.buttonMI.onInputDown.add(this.playAudioMIDown, this);
+		this.buttonMI.onInputUp.add(this.playAudioMIHoverOut, this);
 		this.buttonMI.onInputOut.add(this.playAudioMIHoverOut, this);
 
 		this.buttonFA = this.add.button(256, 0, "imageKey1", null, this, 2, 1, 0);
 		this.buttonFA.input.pixelPerfectOver = true;
 		this.buttonFA.onInputOver.add(this.playAudioFA, this);
-		this.buttonFA.onInputDown.add(this.playAudioFA, this);
+		this.buttonFA.onInputDown.add(this.playAudioFADown, this);
+		this.buttonFA.onInputUp.add(this.playAudioFAHoverOut, this);
 		this.buttonFA.onInputOut.add(this.playAudioFAHoverOut, this);
 
 		this.buttonSOL = this.add.button(341, 0, "imageKey3", null, this, 2, 1, 0);
 		this.buttonSOL.input.pixelPerfectOver = true;
 		this.buttonSOL.onInputOver.add(this.playAudioSOL, this);
-		this.buttonSOL.onInputDown.add(this.playAudioSOL, this);
+		this.buttonSOL.onInputDown.add(this.playAudioSOLDown, this);
+		this.buttonSOL.onInputUp.add(this.playAudioSOLHoverOut, this);
 		this.buttonSOL.onInputOut.add(this.playAudioSOLHoverOut, this);
 
 		this.buttonLA = this.add.button(427, 0, "imageKey2", null, this, 2, 1, 0);
 		this.buttonLA.input.pixelPerfectOver = true;
 		this.buttonLA.onInputOver.add(this.playAudioLA, this);
-		this.buttonLA.onInputDown.add(this.playAudioLA, this);
+		this.buttonLA.onInputDown.add(this.playAudioLADown, this);
+		this.buttonLA.onInputUp.add(this.playAudioLAHoverOut, this);
 		this.buttonLA.onInputOut.add(this.playAudioLAHoverOut, this);
 
 		this.buttonSI = this.add.button(513, 0, "imageKey4", null, this, 2, 1, 0);
 		this.buttonSI.input.pixelPerfectOver = true;
 		this.buttonSI.onInputOver.add(this.playAudioSI, this);
-		this.buttonSI.onInputDown.add(this.playAudioSI, this);
+		this.buttonSI.onInputDown.add(this.playAudioSIDown, this);
+		this.buttonSI.onInputUp.add(this.playAudioSIHoverOut, this);
 		this.buttonSI.onInputOut.add(this.playAudioSIHoverOut, this);
 
 		this.buttonDO_SOST = this.add.button(60, 0, "imageKeySharp", null, this, 2, 1, 0);
 		this.buttonDO_SOST.input.pixelPerfectOver = true;
 		this.buttonDO_SOST.onInputOver.add(this.playAudioDO_SOST, this);
-		this.buttonDO_SOST.onInputDown.add(this.playAudioDO_SOST, this);
+		this.buttonDO_SOST.onInputDown.add(this.playAudioDO_SOSTDown, this);
+		this.buttonDO_SOST.onInputUp.add(this.playAudioDO_SOSTHoverOut, this);
 		this.buttonDO_SOST.onInputOut.add(this.playAudioDO_SOSTHoverOut, this);
 
 		this.buttonRE_SOST = this.add.button(151, 0, "imageKeySharp", null, this, 2, 1, 0);
 		this.buttonRE_SOST.input.pixelPerfectOver = true;
 		this.buttonRE_SOST.onInputOver.add(this.playAudioRE_SOST, this);
 		this.buttonRE_SOST.onInputDown.add(this.playAudioRE_SOST, this);
+		this.buttonRE_SOST.onInputUp.add(this.playAudioRE_SOSTHoverOut, this);
 		this.buttonRE_SOST.onInputOut.add(this.playAudioRE_SOSTHoverOut, this);
 
 		this.buttonFA_SOST = this.add.button(316, 0, "imageKeySharp", null, this, 2, 1, 0);
 		this.buttonFA_SOST.input.pixelPerfectOver = true;
 		this.buttonFA_SOST.onInputOver.add(this.playAudioFA_SOST, this);
 		this.buttonFA_SOST.onInputDown.add(this.playAudioFA_SOST, this);
+		this.buttonFA_SOST.onInputUp.add(this.playAudioFA_SOSTHoverOut, this);
 		this.buttonFA_SOST.onInputOut.add(this.playAudioFA_SOSTHoverOut, this);
 
 		this.buttonSOL_SOST = this.add.button(402, 0, "imageKeySharp", null, this, 2, 1, 0);
 		this.buttonSOL_SOST.input.pixelPerfectOver = true;
 		this.buttonSOL_SOST.onInputOver.add(this.playAudioSOL_SOST, this);
 		this.buttonSOL_SOST.onInputDown.add(this.playAudioSOL_SOST, this);
+		this.buttonSOL_SOST.onInputUp.add(this.playAudioSOL_SOSTHoverOut, this);
 		this.buttonSOL_SOST.onInputOut.add(this.playAudioSOL_SOSTHoverOut, this);
 
 		this.buttonLA_SOST = this.add.button(493, 0, "imageKeySharp", null, this, 2, 1, 0);
 		this.buttonLA_SOST.input.pixelPerfectOver = true;
 		this.buttonLA_SOST.onInputOver.add(this.playAudioLA_SOST, this);
 		this.buttonLA_SOST.onInputDown.add(this.playAudioLA_SOST, this);
+		this.buttonLA_SOST.onInputUp.add(this.playAudioLA_SOSTHoverOut, this);
 		this.buttonLA_SOST.onInputOut.add(this.playAudioLA_SOSTHoverOut, this);
 
 		// About
@@ -226,30 +254,43 @@ MiniPiano.Game.prototype = {
 		},
 
 	playAudioDO: function(){if(game.input.activePointer.isDown==true){this.buttonDO.tint = 0x808080;this.myMusicPlayer = this.add.audio("audioDO");this.myMusicPlayer.play()}},
+	playAudioDODown: function(){this.buttonDOOut=false;this.playAudioDO()},
 	playAudioRE: function(){if(game.input.activePointer.isDown==true){this.buttonRE.tint = 0x808080;this.myMusicPlayer = this.add.audio("audioRE");this.myMusicPlayer.play()}},
+	playAudioREDown: function(){this.buttonREOut=false;this.playAudioRE()},
 	playAudioMI: function(){if(game.input.activePointer.isDown==true){this.buttonMI.tint = 0x808080;this.myMusicPlayer = this.add.audio("audioMI");this.myMusicPlayer.play()}},
+	playAudioMIDown: function(){this.buttonMIOut=false;this.playAudioMI()},
 	playAudioFA: function(){if(game.input.activePointer.isDown==true){this.buttonFA.tint = 0x808080;this.myMusicPlayer = this.add.audio("audioFA");this.myMusicPlayer.play()}},
+	playAudioFADown: function(){this.buttonFAOut=false;this.playAudioFA()},
 	playAudioSOL: function(){if(game.input.activePointer.isDown==true){this.buttonSOL.tint = 0x808080;this.myMusicPlayer = this.add.audio("audioSOL");this.myMusicPlayer.play()}},
+	playAudioSOLDown: function(){this.buttonSOLOut=false;this.playAudioSOL()},
 	playAudioLA: function(){if(game.input.activePointer.isDown==true){this.buttonLA.tint = 0x808080;this.myMusicPlayer = this.add.audio("audioLA");this.myMusicPlayer.play()}},
+	playAudioLADown: function(){this.buttonLAOut=false;this.playAudioLA()},
 	playAudioSI: function(){if(game.input.activePointer.isDown==true){this.buttonSI.tint = 0x808080;this.myMusicPlayer = this.add.audio("audioSI");this.myMusicPlayer.play()}},
-	playAudioDO_SOST: function(){if(game.input.activePointer.isDown==true){this.buttonDO_SOST.tint = 0x808080;this.myMusicPlayer = this.add.audio("audioDO_SOST");this.myMusicPlayer.play()}},
-	playAudioRE_SOST: function(){if(game.input.activePointer.isDown==true){this.buttonRE_SOST.tint = 0x808080;this.myMusicPlayer = this.add.audio("audioRE_SOST");this.myMusicPlayer.play()}},
-	playAudioFA_SOST: function(){if(game.input.activePointer.isDown==true){this.buttonFA_SOST.tint = 0x808080;this.myMusicPlayer = this.add.audio("audioFA_SOST");this.myMusicPlayer.play()}},
-	playAudioSOL_SOST: function(){if(game.input.activePointer.isDown==true){this.buttonSOL_SOST.tint = 0x808080;this.myMusicPlayer = this.add.audio("audioSOL_SOST");this.myMusicPlayer.play()}},
-	playAudioLA_SOST: function(){if(game.input.activePointer.isDown==true){this.buttonLA_SOST.tint = 0x808080;this.myMusicPlayer = this.add.audio("audioLA_SOST");this.myMusicPlayer.play()}},
+	playAudioSIDown: function(){this.buttonSIOut=false;this.playAudioSI()},
 
-	playAudioDOHoverOut: function(){this.buttonDO.tint = 0xffffff},
-	playAudioREHoverOut: function(){this.buttonRE.tint = 0xffffff},
-	playAudioMIHoverOut: function(){this.buttonMI.tint = 0xffffff},
-	playAudioFAHoverOut: function(){this.buttonFA.tint = 0xffffff},
-	playAudioSOLHoverOut: function(){this.buttonSOL.tint = 0xffffff},
-	playAudioLAHoverOut: function(){this.buttonLA.tint = 0xffffff},
-	playAudioSIHoverOut: function(){this.buttonSI.tint = 0xffffff},
-	playAudioDO_SOSTHoverOut: function(){this.buttonDO_SOST.tint = 0xffffff},
-	playAudioRE_SOSTHoverOut: function(){this.buttonRE_SOST.tint = 0xffffff},
-	playAudioFA_SOSTHoverOut: function(){this.buttonFA_SOST.tint = 0xffffff},
-	playAudioSOL_SOSTHoverOut: function(){this.buttonSOL_SOST.tint = 0xffffff},
-	playAudioLA_SOSTHoverOut: function(){this.buttonLA_SOST.tint = 0xffffff},
+	playAudioDO_SOST: function(){if(game.input.activePointer.isDown==true){this.buttonDO_SOST.tint = 0x808080;this.myMusicPlayer = this.add.audio("audioDO_SOST");this.myMusicPlayer.play()}},
+	playAudioDO_SOSTDown: function(){this.buttonDO_SOSTOut=false;this.playAudioDO_SOST()},
+	playAudioRE_SOST: function(){if(game.input.activePointer.isDown==true){this.buttonRE_SOST.tint = 0x808080;this.myMusicPlayer = this.add.audio("audioRE_SOST");this.myMusicPlayer.play()}},
+	playAudioRE_SOSTDown: function(){this.buttonRE_SOSTOut=false;this.playAudioRE_SOST()},
+	playAudioFA_SOST: function(){if(game.input.activePointer.isDown==true){this.buttonFA_SOST.tint = 0x808080;this.myMusicPlayer = this.add.audio("audioFA_SOST");this.myMusicPlayer.play()}},
+	playAudioFA_SOSTDown: function(){this.buttonFA_SOSTOut=false;this.playAudioFA_SOST()},
+	playAudioSOL_SOST: function(){if(game.input.activePointer.isDown==true){this.buttonSOL_SOST.tint = 0x808080;this.myMusicPlayer = this.add.audio("audioSOL_SOST");this.myMusicPlayer.play()}},
+	playAudioSOL_SOSTDown: function(){this.buttonSOL_SOSTOut=false;this.playAudioSOL_SOST()},
+	playAudioLA_SOST: function(){if(game.input.activePointer.isDown==true){this.buttonLA_SOST.tint = 0x808080;this.myMusicPlayer = this.add.audio("audioLA_SOST");this.myMusicPlayer.play()}},
+	playAudioLA_SOSTDown: function(){this.buttonLA_SOSTOut=false;this.playAudioLA_SOST()},
+
+	playAudioDOHoverOut: function(){this.buttonDO.tint = 0xffffff;this.buttonDOOut=true},
+	playAudioREHoverOut: function(){this.buttonRE.tint = 0xffffff;this.buttonREOut=true},
+	playAudioMIHoverOut: function(){this.buttonMI.tint = 0xffffff;this.buttonMIOut=true},
+	playAudioFAHoverOut: function(){this.buttonFA.tint = 0xffffff;this.buttonFAOut=true},
+	playAudioSOLHoverOut: function(){this.buttonSOL.tint = 0xffffff;this.buttonSOLOut=true},
+	playAudioLAHoverOut: function(){this.buttonLA.tint = 0xffffff;this.buttonLAOut=true},
+	playAudioSIHoverOut: function(){this.buttonSI.tint = 0xffffff;this.buttonSIOut=true},
+	playAudioDO_SOSTHoverOut: function(){this.buttonDO_SOST.tint = 0xffffff;this.buttonDO_SOSTOut=true},
+	playAudioRE_SOSTHoverOut: function(){this.buttonRE_SOST.tint = 0xffffff;this.buttonRE_SOSTOut=true},
+	playAudioFA_SOSTHoverOut: function(){this.buttonFA_SOST.tint = 0xffffff;this.buttonFA_SOSTOut=true},
+	playAudioSOL_SOSTHoverOut: function(){this.buttonSOL_SOST.tint = 0xffffff;this.buttonSOL_SOSTOut=true},
+	playAudioLA_SOSTHoverOut: function(){this.buttonLA_SOST.tint = 0xffffff;this.buttonLA_SOSTOut=true},
 	};
 
 var game = new Phaser.Game(598, 495, Phaser.WEBGL, "game", null, false, true);
