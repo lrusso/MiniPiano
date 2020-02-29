@@ -9,7 +9,7 @@ MiniPiano.Preloader.prototype = {
 
 	init: function ()
 		{
-		this.input.maxPointers = 9;
+		this.input.maxPointers = 2;
 		this.game.renderer.renderSession.roundPixels = false;
 
 		var scaleX = window.innerWidth / 598;
@@ -140,61 +140,73 @@ MiniPiano.Game.prototype = {
 		game.input.onDown.addOnce(game.sound.context.resume, game.sound.context);
 
 		this.buttonDO = this.add.button(0, 0, "imageKey1", null, this, 2, 1, 0);
+		this.buttonDO.input.pixelPerfectOver = true;
 		this.buttonDO.onInputOver.add(this.playAudioDO, this);
 		this.buttonDO.onInputDown.add(this.playAudioDO, this);
 		this.buttonDO.onInputOut.add(this.playAudioDOHoverOut, this);
 
 		this.buttonRE = this.add.button(85, 0, "imageKey2", null, this, 2, 1, 0);
+		this.buttonRE.input.pixelPerfectOver = true;
 		this.buttonRE.onInputOver.add(this.playAudioRE, this);
 		this.buttonRE.onInputDown.add(this.playAudioRE, this);
 		this.buttonRE.onInputOut.add(this.playAudioREHoverOut, this);
 
 		this.buttonMI = this.add.button(171, 0, "imageKey4", null, this, 2, 1, 0);
+		this.buttonMI.input.pixelPerfectOver = true;
 		this.buttonMI.onInputOver.add(this.playAudioMI, this);
 		this.buttonMI.onInputDown.add(this.playAudioMI, this);
 		this.buttonMI.onInputOut.add(this.playAudioMIHoverOut, this);
 
 		this.buttonFA = this.add.button(256, 0, "imageKey1", null, this, 2, 1, 0);
+		this.buttonFA.input.pixelPerfectOver = true;
 		this.buttonFA.onInputOver.add(this.playAudioFA, this);
 		this.buttonFA.onInputDown.add(this.playAudioFA, this);
 		this.buttonFA.onInputOut.add(this.playAudioFAHoverOut, this);
 
 		this.buttonSOL = this.add.button(341, 0, "imageKey3", null, this, 2, 1, 0);
+		this.buttonSOL.input.pixelPerfectOver = true;
 		this.buttonSOL.onInputOver.add(this.playAudioSOL, this);
 		this.buttonSOL.onInputDown.add(this.playAudioSOL, this);
 		this.buttonSOL.onInputOut.add(this.playAudioSOLHoverOut, this);
 
 		this.buttonLA = this.add.button(427, 0, "imageKey2", null, this, 2, 1, 0);
+		this.buttonLA.input.pixelPerfectOver = true;
 		this.buttonLA.onInputOver.add(this.playAudioLA, this);
 		this.buttonLA.onInputDown.add(this.playAudioLA, this);
 		this.buttonLA.onInputOut.add(this.playAudioLAHoverOut, this);
 
 		this.buttonSI = this.add.button(513, 0, "imageKey4", null, this, 2, 1, 0);
+		this.buttonSI.input.pixelPerfectOver = true;
 		this.buttonSI.onInputOver.add(this.playAudioSI, this);
 		this.buttonSI.onInputDown.add(this.playAudioSI, this);
 		this.buttonSI.onInputOut.add(this.playAudioSIHoverOut, this);
 
 		this.buttonDO_SOST = this.add.button(60, 0, "imageKeySharp", null, this, 2, 1, 0);
+		this.buttonDO_SOST.input.pixelPerfectOver = true;
 		this.buttonDO_SOST.onInputOver.add(this.playAudioDO_SOST, this);
 		this.buttonDO_SOST.onInputDown.add(this.playAudioDO_SOST, this);
 		this.buttonDO_SOST.onInputOut.add(this.playAudioDO_SOSTHoverOut, this);
 
 		this.buttonRE_SOST = this.add.button(151, 0, "imageKeySharp", null, this, 2, 1, 0);
+		this.buttonRE_SOST.input.pixelPerfectOver = true;
 		this.buttonRE_SOST.onInputOver.add(this.playAudioRE_SOST, this);
 		this.buttonRE_SOST.onInputDown.add(this.playAudioRE_SOST, this);
 		this.buttonRE_SOST.onInputOut.add(this.playAudioRE_SOSTHoverOut, this);
 
 		this.buttonFA_SOST = this.add.button(316, 0, "imageKeySharp", null, this, 2, 1, 0);
+		this.buttonFA_SOST.input.pixelPerfectOver = true;
 		this.buttonFA_SOST.onInputOver.add(this.playAudioFA_SOST, this);
 		this.buttonFA_SOST.onInputDown.add(this.playAudioFA_SOST, this);
 		this.buttonFA_SOST.onInputOut.add(this.playAudioFA_SOSTHoverOut, this);
 
 		this.buttonSOL_SOST = this.add.button(402, 0, "imageKeySharp", null, this, 2, 1, 0);
+		this.buttonSOL_SOST.input.pixelPerfectOver = true;
 		this.buttonSOL_SOST.onInputOver.add(this.playAudioSOL_SOST, this);
 		this.buttonSOL_SOST.onInputDown.add(this.playAudioSOL_SOST, this);
 		this.buttonSOL_SOST.onInputOut.add(this.playAudioSOL_SOSTHoverOut, this);
 
 		this.buttonLA_SOST = this.add.button(493, 0, "imageKeySharp", null, this, 2, 1, 0);
+		this.buttonLA_SOST.input.pixelPerfectOver = true;
 		this.buttonLA_SOST.onInputOver.add(this.playAudioLA_SOST, this);
 		this.buttonLA_SOST.onInputDown.add(this.playAudioLA_SOST, this);
 		this.buttonLA_SOST.onInputOut.add(this.playAudioLA_SOSTHoverOut, this);
