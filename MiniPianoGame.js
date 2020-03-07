@@ -157,6 +157,7 @@ MiniPiano.Game.prototype = {
 
 		this.buttonaudioC = this.add.button(0, 0, "imageKey1", null, this, 2, 1, 0);
 		this.buttonaudioC.input.pixelPerfectOver = true;
+		this.buttonaudioC.input.pixelPerfectClick = true;
 		this.buttonaudioC.onInputOver.add(this.playaudioC, this);
 		this.buttonaudioC.onInputDown.add(this.playaudioCDown, this);
 		this.buttonaudioC.onInputUp.add(this.playaudioCHoverOut, this);
@@ -164,6 +165,7 @@ MiniPiano.Game.prototype = {
 
 		this.buttonaudioD = this.add.button(85, 0, "imageKey2", null, this, 2, 1, 0);
 		this.buttonaudioD.input.pixelPerfectOver = true;
+		this.buttonaudioD.input.pixelPerfectClick = true;
 		this.buttonaudioD.onInputOver.add(this.playaudioD, this);
 		this.buttonaudioD.onInputDown.add(this.playaudioDDown, this);
 		this.buttonaudioD.onInputUp.add(this.playaudioDHoverOut, this);
@@ -171,6 +173,7 @@ MiniPiano.Game.prototype = {
 
 		this.buttonaudioE = this.add.button(171, 0, "imageKey4", null, this, 2, 1, 0);
 		this.buttonaudioE.input.pixelPerfectOver = true;
+		this.buttonaudioE.input.pixelPerfectClick = true;
 		this.buttonaudioE.onInputOver.add(this.playaudioE, this);
 		this.buttonaudioE.onInputDown.add(this.playaudioEDown, this);
 		this.buttonaudioE.onInputUp.add(this.playaudioEHoverOut, this);
@@ -178,6 +181,7 @@ MiniPiano.Game.prototype = {
 
 		this.buttonaudioF = this.add.button(256, 0, "imageKey1", null, this, 2, 1, 0);
 		this.buttonaudioF.input.pixelPerfectOver = true;
+		this.buttonaudioF.input.pixelPerfectClick = true;
 		this.buttonaudioF.onInputOver.add(this.playaudioF, this);
 		this.buttonaudioF.onInputDown.add(this.playaudioFDown, this);
 		this.buttonaudioF.onInputUp.add(this.playaudioFHoverOut, this);
@@ -185,6 +189,7 @@ MiniPiano.Game.prototype = {
 
 		this.buttonaudioG = this.add.button(341, 0, "imageKey3", null, this, 2, 1, 0);
 		this.buttonaudioG.input.pixelPerfectOver = true;
+		this.buttonaudioG.input.pixelPerfectClick = true;
 		this.buttonaudioG.onInputOver.add(this.playaudioG, this);
 		this.buttonaudioG.onInputDown.add(this.playaudioGDown, this);
 		this.buttonaudioG.onInputUp.add(this.playaudioGHoverOut, this);
@@ -192,6 +197,7 @@ MiniPiano.Game.prototype = {
 
 		this.buttonaudioA = this.add.button(427, 0, "imageKey2", null, this, 2, 1, 0);
 		this.buttonaudioA.input.pixelPerfectOver = true;
+		this.buttonaudioA.input.pixelPerfectClick = true;
 		this.buttonaudioA.onInputOver.add(this.playaudioA, this);
 		this.buttonaudioA.onInputDown.add(this.playaudioADown, this);
 		this.buttonaudioA.onInputUp.add(this.playaudioAHoverOut, this);
@@ -199,6 +205,7 @@ MiniPiano.Game.prototype = {
 
 		this.buttonaudioB = this.add.button(513, 0, "imageKey4", null, this, 2, 1, 0);
 		this.buttonaudioB.input.pixelPerfectOver = true;
+		this.buttonaudioB.input.pixelPerfectClick = true;
 		this.buttonaudioB.onInputOver.add(this.playaudioB, this);
 		this.buttonaudioB.onInputDown.add(this.playaudioBDown, this);
 		this.buttonaudioB.onInputUp.add(this.playaudioBHoverOut, this);
@@ -206,6 +213,7 @@ MiniPiano.Game.prototype = {
 
 		this.buttonaudioC_SHARP = this.add.button(60, 0, "imageKeySharp", null, this, 2, 1, 0);
 		this.buttonaudioC_SHARP.input.pixelPerfectOver = true;
+		this.buttonaudioC_SHARP.input.pixelPerfectClick = true;
 		this.buttonaudioC_SHARP.onInputOver.add(this.playaudioC_SHARP, this);
 		this.buttonaudioC_SHARP.onInputDown.add(this.playaudioC_SHARPDown, this);
 		this.buttonaudioC_SHARP.onInputUp.add(this.playaudioC_SHARPHoverOut, this);
@@ -213,6 +221,7 @@ MiniPiano.Game.prototype = {
 
 		this.buttonaudioD_SHARP = this.add.button(151, 0, "imageKeySharp", null, this, 2, 1, 0);
 		this.buttonaudioD_SHARP.input.pixelPerfectOver = true;
+		this.buttonaudioD_SHARP.input.pixelPerfectClick = true;
 		this.buttonaudioD_SHARP.onInputOver.add(this.playaudioD_SHARP, this);
 		this.buttonaudioD_SHARP.onInputDown.add(this.playaudioD_SHARP, this);
 		this.buttonaudioD_SHARP.onInputUp.add(this.playaudioD_SHARPHoverOut, this);
@@ -220,6 +229,7 @@ MiniPiano.Game.prototype = {
 
 		this.buttonaudioF_SHARP = this.add.button(316, 0, "imageKeySharp", null, this, 2, 1, 0);
 		this.buttonaudioF_SHARP.input.pixelPerfectOver = true;
+		this.buttonaudioF_SHARP.input.pixelPerfectClick = true;
 		this.buttonaudioF_SHARP.onInputOver.add(this.playaudioF_SHARP, this);
 		this.buttonaudioF_SHARP.onInputDown.add(this.playaudioF_SHARP, this);
 		this.buttonaudioF_SHARP.onInputUp.add(this.playaudioF_SHARPHoverOut, this);
@@ -227,6 +237,7 @@ MiniPiano.Game.prototype = {
 
 		this.buttonaudioG_SHARP = this.add.button(402, 0, "imageKeySharp", null, this, 2, 1, 0);
 		this.buttonaudioG_SHARP.input.pixelPerfectOver = true;
+		this.buttonaudioG_SHARP.input.pixelPerfectClick = true;
 		this.buttonaudioG_SHARP.onInputOver.add(this.playaudioG_SHARP, this);
 		this.buttonaudioG_SHARP.onInputDown.add(this.playaudioG_SHARP, this);
 		this.buttonaudioG_SHARP.onInputUp.add(this.playaudioG_SHARPHoverOut, this);
@@ -234,6 +245,7 @@ MiniPiano.Game.prototype = {
 
 		this.buttonaudioA_SHARP = this.add.button(493, 0, "imageKeySharp", null, this, 2, 1, 0);
 		this.buttonaudioA_SHARP.input.pixelPerfectOver = true;
+		this.buttonaudioA_SHARP.input.pixelPerfectClick = true;
 		this.buttonaudioA_SHARP.onInputOver.add(this.playaudioA_SHARP, this);
 		this.buttonaudioA_SHARP.onInputDown.add(this.playaudioA_SHARP, this);
 		this.buttonaudioA_SHARP.onInputUp.add(this.playaudioA_SHARPHoverOut, this);
