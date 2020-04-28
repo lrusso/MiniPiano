@@ -13,11 +13,12 @@ MiniPiano.Preloader.prototype = {
 		this.game.renderer.renderSession.roundPixels = false;
 
 		var scaleX = window.innerWidth / 598;
-		var scaleY = window.innerHeight / 495;
+		var scaleY = window.innerHeight / 488;
 		var scale = Math.min(scaleX, scaleY);
 		this.scale.scaleMode = Phaser.ScaleManager.USER_SCALE;
 		this.scale.setUserScale(scale, scale);
 		this.scale.pageAlignHorizontally = true;
+		this.scale.pageAlignVertically = true;
 		this.scale.refresh();
 		},
 
@@ -109,11 +110,12 @@ MiniPiano.Game = function (game)
 	function resizeF()
 		{
 		var scaleX = window.innerWidth / 598;
-		var scaleY = window.innerHeight / 495;
+		var scaleY = window.innerHeight / 488;
 		var scale = Math.min(scaleX, scaleY);
 		game.scale.scaleMode = Phaser.ScaleManager.USER_SCALE;
 		game.scale.setUserScale(scale, scale);
 		game.scale.pageAlignHorizontally = true;
+		game.scale.pageAlignVertically = true;
 		game.scale.refresh();
 		}
 
@@ -306,7 +308,7 @@ MiniPiano.Game.prototype = {
 	};
 
 
-var config = {width: 598, height: 495, renderer: Phaser.WEBGL, parent: "content", disableVisibilityChange: true, preserveDrawingBuffer: true};
+var config = {width: 598, height: 488, renderer: Phaser.WEBGL, parent: "content", disableVisibilityChange: true, preserveDrawingBuffer: true};
 var game = new Phaser.Game(config);
 game.state.add("MiniPiano.Preloader", MiniPiano.Preloader);
 game.state.add("MiniPiano.Game", MiniPiano.Game);
