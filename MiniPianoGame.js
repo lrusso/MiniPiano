@@ -305,7 +305,9 @@ MiniPiano.Game.prototype = {
 	playaudioA_SHARPHoverOut: function(){this.buttonaudioA_SHARP.tint = 0xffffff;this.buttonaudioA_SHARPOut=true},
 	};
 
-var game = new Phaser.Game(598, 495, Phaser.WEBGL, "game", null, false, true);
+
+var config = {width: 598, height: 495, renderer: Phaser.WEBGL, parent: "content", disableVisibilityChange: true, preserveDrawingBuffer: true};
+var game = new Phaser.Game(config);
 game.state.add("MiniPiano.Preloader", MiniPiano.Preloader);
 game.state.add("MiniPiano.Game", MiniPiano.Game);
 game.state.start("MiniPiano.Preloader");
