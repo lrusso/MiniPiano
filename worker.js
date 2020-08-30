@@ -6,7 +6,8 @@ const filesToCache = [
 	"MiniPianoFavIcon_192x192.png",
 	"MiniPianoFavIcon_512x512.png",
 	"MiniPianoGame.htm",
-	"MiniPianoGame.js"
+	"MiniPianoGame.js",
+	"MiniPianoShare.png"
 ];
 
 const staticCacheName = "minipiano-v1";
