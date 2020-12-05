@@ -88,7 +88,9 @@ MiniPiano.Preloader.prototype = {
 
 MiniPiano.Game = function (game)
 	{
-	this.splash = true;
+	this.toast = true;
+	this.toastText = null;
+	this.toastShadow = null;
 
 	this.buttonaudioC = null;
 	this.buttonaudioD = null;
@@ -270,26 +272,14 @@ MiniPiano.Game.prototype = {
 		this.buttonaudioA_SHARP.onInputUp.add(this.playaudioA_SHARPHoverOut, this);
 		this.buttonaudioA_SHARP.onInputOut.add(this.playaudioA_SHARPHoverOut, this);
 
-		// CHECKING IF THE SPLASH MUST BE DISPLAYED
-		if (this.splash==true)
+		// CHECKING IF THE ABOUT TOAST MUST BE DISPLAYED
+		if (this.toast==true)
 			{
-			// ADDING THE SPLASH
-			var toastShadow = game.add.graphics();
-			toastShadow.beginFill(0x000000, 0.4);
-			var toastText = game.add.text(0, 0, STRING_ABOUT, { font: "bold 24px Arial", fill: "#fff", boundsAlignH: "center", boundsAlignV: "middle" });
-			toastText.setShadow(3, 3, "rgba(0,0,0,0.5)", 2);
-			toastText.setTextBounds(0, 420, 595, 55);
-			toastShadow.drawRoundedRect(595 / 2 - toastText._width / 2 - 11, 423, toastText._width + 23, 46, 10);
+			// SHOWING THE ABOUT TOAST
+			this.showToast(STRING_ABOUT, true);
 
-			// SETTING THAT IN 3 SECONDS THE SPLASH MUST FADE OUT
-			setTimeout(function()
-				{
-				game.add.tween(toastShadow).to({alpha: 0}, 500, Phaser.Easing.Linear.None, true);
-				game.add.tween(toastText).to({alpha: 0}, 500, Phaser.Easing.Linear.None, true);
-				}, 3000);
-
-			// SETTING THAT THE SPLASH MUST NOT BE DISPLAYED AGAIN
-			this.splash = false;
+			// SETTING THAT THE ABOUT TOAST MUST NOT BE DISPLAYED AGAIN
+			this.toast = false;
 			}
 		},
 
@@ -331,6 +321,25 @@ MiniPiano.Game.prototype = {
 	playaudioF_SHARPHoverOut: function(){this.buttonaudioF_SHARP.tint = 0xffffff;this.buttonaudioF_SHARPOut=true},
 	playaudioG_SHARPHoverOut: function(){this.buttonaudioG_SHARP.tint = 0xffffff;this.buttonaudioG_SHARPOut=true},
 	playaudioA_SHARPHoverOut: function(){this.buttonaudioA_SHARP.tint = 0xffffff;this.buttonaudioA_SHARPOut=true},
+
+	showToast: function(myText, mustFade)
+		{
+		this.toastShadow = game.add.graphics();
+		this.toastShadow.beginFill(0x000000, 0.4);
+		this.toastText = game.add.text(0, 0, myText, { font: "bold 24px Arial", fill: "#fff", boundsAlignH: "center", boundsAlignV: "middle" });
+		this.toastText.setShadow(3, 3, "rgba(0,0,0,0.5)", 2);
+		this.toastText.setTextBounds(0, 420, 595, 55);
+		this.toastShadow.drawRoundedRect(595 / 2 - this.toastText._width / 2 - 11, 423, this.toastText._width + 23, 46, 10);
+
+		if (mustFade==true)
+			{
+			setTimeout(function()
+				{
+				game.add.tween(game.state.states["MiniPiano.Game"].toastShadow).to({alpha: 0}, 500, Phaser.Easing.Linear.None, true);
+				game.add.tween(game.state.states["MiniPiano.Game"].toastText).to({alpha: 0}, 500, Phaser.Easing.Linear.None, true);
+				}, 3000);
+			}
+		},
 	};
 
 
