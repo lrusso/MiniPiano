@@ -350,7 +350,6 @@ MiniPiano.Game.prototype = {
 		}
 	};
 
-
 var config = {width: 598, height: 488, renderer: Phaser.WEBGL, parent: "content", disableVisibilityChange: true};
 var game = new Phaser.Game(config);
 game.state.add("MiniPiano.Preloader", MiniPiano.Preloader);
