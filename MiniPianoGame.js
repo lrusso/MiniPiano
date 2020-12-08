@@ -347,7 +347,7 @@ MiniPiano.Game.prototype = {
 				game.add.tween(game.state.states["MiniPiano.Game"].toastText).to({alpha: 0}, 500, Phaser.Easing.Linear.None, true);
 				}, 3000);
 			}
-		},
+		}
 	};
 
 
