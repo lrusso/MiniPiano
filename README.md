@@ -1,6 +1,6 @@
 # MiniPiano
 
-MiniPiano in JavaScript.
+MiniPiano developed in JavaScript.
 
 ![alt screenshot](https://raw.githubusercontent.com/lrusso/MiniPiano/master/MiniPiano.png)
 
