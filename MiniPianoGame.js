@@ -24,9 +24,13 @@ MiniPiano.Preloader.prototype = {
 
 	init: function ()
 		{
+		// SETTING THE MAXPOINTERS VALUE
 		this.input.maxPointers = 2;
+
+		// SETTING THE ROUNDPIXELS PROPERTY TO FALSE (IMPORTANT, DO NOT MODIFY)
 		this.game.renderer.renderSession.roundPixels = false;
 
+		// SCALING THE CANVAS SIZE FOR THE GAME
 		var scaleX = window.innerWidth / 598;
 		var scaleY = window.innerHeight / 488;
 		var scale = Math.min(scaleX, scaleY);
@@ -126,6 +130,7 @@ MiniPiano.Game = function (game)
 
 	this.myMusicPlayer = null;
 
+	// SCALING THE CANVAS SIZE FOR THE GAME
 	function resizeF()
 		{
 		var scaleX = window.innerWidth / 598;
@@ -150,8 +155,10 @@ MiniPiano.Game.prototype = {
 
 	update: function ()
 		{
+		// CHECKING IF THE FINGER OR CLICK IS UP
 		if(game.input.activePointer.isUp==true)
 			{
+			// CHECKING IF IT IS NECESSARY TO HOVER OUT THE PIANO KEYS
 			if (this.buttonaudioCOut==true){this.playaudioCHoverOut()}
 			if (this.buttonaudioDOut==true){this.playaudioDHoverOut()}
 			if (this.buttonaudioEOut==true){this.playaudioEHoverOut()}
@@ -160,6 +167,7 @@ MiniPiano.Game.prototype = {
 			if (this.buttonaudioAOut==true){this.playaudioAHoverOut()}
 			if (this.buttonaudioBOut==true){this.playaudioBHoverOut()}
 
+			// CHECKING IF IT IS NECESSARY TO HOVER OUT THE PIANO SHARP KEYS
 			if (this.buttonaudioC_SHARPOut==true){this.playaudioC_SHARPHoverOut()}
 			if (this.buttonaudioD_SHARPOut==true){this.playaudioD_SHARPHoverOut()}
 			if (this.buttonaudioF_SHARPOut==true){this.playaudioF_SHARPHoverOut()}
@@ -170,9 +178,10 @@ MiniPiano.Game.prototype = {
 
 	create: function ()
 		{
-		// Setting the background image
+		// SETTING THE BACKGROUND IMAGE
 		game.stage.backgroundColor = "#4488AA";
 
+		// ENABLING THE AUDIO CONTEXT WHEN THE USER TOUCHES OR CLICKS ON THE SCREEN
 		game.input.onTap.addOnce(game.sound.context.resume, game.sound.context);
 		game.input.onDown.addOnce(game.sound.context.resume, game.sound.context);
 
