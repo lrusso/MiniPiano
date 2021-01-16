@@ -340,10 +340,10 @@ MiniPiano.Game.prototype = {
 		// CREATING THE TOAST TEXT
 		this.toastText = game.add.text(0, 0, myText, { font: "bold 24px Arial", fill: "#fff", boundsAlignH: "center", boundsAlignV: "middle" });
 		this.toastText.setShadow(3, 3, "rgba(0,0,0,0.5)", 2);
-		this.toastText.setTextBounds(0, 420, 595, 55);
+		this.toastText.setTextBounds(0, 420, 598, 55);
 
 		// DRAWING THE TOAST SHADOW
-		this.toastShadow.drawRoundedRect(595 / 2 - this.toastText._width / 2 - 11, 423, this.toastText._width + 23, 46, 10);
+		this.toastShadow.drawRoundedRect(598 / 2 - this.toastText._width / 2 - 11, 423, this.toastText._width + 23, 46, 10);
 
 		// CHECKING IF THE TOAST MUST FADE OUT
 		if (mustFade==true)
