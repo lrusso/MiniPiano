@@ -389,7 +389,7 @@ MiniPiano.Game.prototype = {
 	};
 
 // CREATING THE GAME INSTANCE
-var config = {width: 598, height: 488, renderer: Phaser.WEBGL, parent: "content", disableVisibilityChange: false};
+var config = {width: 598, height: 488, renderer: Phaser.WEBGL, parent: "content", disableVisibilityChange: true};
 var game = new Phaser.Game(config);
 
 // CREATING THE STATES
