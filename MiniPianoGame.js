@@ -7,6 +7,9 @@
 // isWebGLAvailable.min.js
 function isWebGLAvailable(){if(window.WebGLRenderingContext){for(var e=document.createElement("canvas"),t=["webgl2","webgl","experimental-webgl","moz-webgl","webkit-3d"],n=!1,r=0;r<t.length;r++)try{if((n=e.getContext(t[r]))&&"function"==typeof n.getParameter)return!0}catch(e){}return!1}return!1}
 
+// isMobileDevice.js
+function isMobileDevice(){return!!(navigator.userAgent.match(/Android/i)||navigator.userAgent.match(/webOS/i)||navigator.userAgent.match(/iPhone/i)||navigator.userAgent.match(/iPad/i)||navigator.userAgent.match(/iPod/i)||navigator.userAgent.match(/BlackBerry/i)||navigator.userAgent.match(/Windows Phone/i))}
+
 var MiniPiano = {showDebug: false};
 
 MiniPiano.Preloader = function(){};
@@ -376,8 +379,8 @@ MiniPiano.Game.prototype = {
 	playSoundA_SHARPHoverOut: function(){this.buttonSoundA_SHARP.tint = 0xffffff;this.buttonSoundA_SHARPOut=true}
 	};
 
-// WORKAROUND FOR IOS - CHECKING EVERY 200 MS IF THE DOCUMENT HAS FOCUS IN ORDER TO PAUSE OR RESUME THE GAME
-setInterval(function(){try{if(document.hasFocus()==true){game.paused=false;}else{game.paused=true;}}catch(err){}},200);
+// WORKAROUND FOR IOS - UPDATING EVERY 200 MS THE GAME STATE ACCORDING THE DOCUMENT VISIBILITY AND DEVICE TYPE
+var isMobileDeviceChecker=isMobileDevice();setInterval(function(){try{if(isMobileDeviceChecker==true){game.paused=document.hidden;}else{if(document.hasFocus()==true){game.paused=false;}else{game.paused=true;}}}catch(err){}},200);
 
 // SETTING THE DEFAULT RENDERER MODE
 var rendererMode = Phaser.WEBGL;
