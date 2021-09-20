@@ -10,6 +10,7 @@ https://lrusso.github.io/MiniPiano/MiniPiano.htm
 
 ## Main diferences with the original version:
 
+* Keyboard input implementation.
 * Fixed aspect ratio to fit the screen.
 * Implementing the landscape mode in mobile devices.
 * Fixed first touch in order to enable the audio Context.
