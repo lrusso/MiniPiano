@@ -185,6 +185,19 @@ MiniPiano.Game = function (game)
 	this.buttonSoundA_SHARPOut = true;
 	this.buttonSoundB_SHARPOut = true;
 
+	this.keyA = null;
+	this.keyS = null;
+	this.keyD = null;
+	this.keyF = null;
+	this.keyG = null;
+	this.keyH = null;
+	this.keyJ = null;
+	this.keyW = null;
+	this.keyE = null;
+	this.keyT = null;
+	this.keyY = null;
+	this.keyU = null;
+
 	this.myMusicPlayer = null;
 
 	// SCALING THE CANVAS SIZE FOR THE GAME
@@ -212,24 +225,137 @@ MiniPiano.Game.prototype = {
 
 	update: function()
 		{
-		// CHECKING IF THE FINGER OR CLICK IS UP
-		if(game.input.activePointer.isUp==true)
+		if (isMobileDeviceChecker==true)
 			{
-			// CHECKING IF IT IS NECESSARY TO HOVER OUT THE PIANO KEYS
-			if (this.buttonSoundCOut==true){this.playSoundCHoverOut()}
-			if (this.buttonSoundDOut==true){this.playSoundDHoverOut()}
-			if (this.buttonSoundEOut==true){this.playSoundEHoverOut()}
-			if (this.buttonSoundFOut==true){this.playSoundFHoverOut()}
-			if (this.buttonSoundGOut==true){this.playSoundGHoverOut()}
-			if (this.buttonSoundAOut==true){this.playSoundAHoverOut()}
-			if (this.buttonSoundBOut==true){this.playSoundBHoverOut()}
+			// CHECKING IF THE FINGER OR CLICK IS UP
+			if(game.input.activePointer.isUp==true)
+				{
+				// CHECKING IF IT IS NECESSARY TO HOVER OUT THE PIANO KEYS
+				if (this.buttonSoundCOut==true){this.playSoundCHoverOut()}
+				if (this.buttonSoundDOut==true){this.playSoundDHoverOut()}
+				if (this.buttonSoundEOut==true){this.playSoundEHoverOut()}
+				if (this.buttonSoundFOut==true){this.playSoundFHoverOut()}
+				if (this.buttonSoundGOut==true){this.playSoundGHoverOut()}
+				if (this.buttonSoundAOut==true){this.playSoundAHoverOut()}
+				if (this.buttonSoundBOut==true){this.playSoundBHoverOut()}
 
-			// CHECKING IF IT IS NECESSARY TO HOVER OUT THE PIANO SHARP KEYS
-			if (this.buttonSoundC_SHARPOut==true){this.playSoundC_SHARPHoverOut()}
-			if (this.buttonSoundD_SHARPOut==true){this.playSoundD_SHARPHoverOut()}
-			if (this.buttonSoundF_SHARPOut==true){this.playSoundF_SHARPHoverOut()}
-			if (this.buttonSoundG_SHARPOut==true){this.playSoundG_SHARPHoverOut()}
-			if (this.buttonSoundA_SHARPOut==true){this.playSoundA_SHARPHoverOut()}
+				// CHECKING IF IT IS NECESSARY TO HOVER OUT THE PIANO SHARP KEYS
+				if (this.buttonSoundC_SHARPOut==true){this.playSoundC_SHARPHoverOut()}
+				if (this.buttonSoundD_SHARPOut==true){this.playSoundD_SHARPHoverOut()}
+				if (this.buttonSoundF_SHARPOut==true){this.playSoundF_SHARPHoverOut()}
+				if (this.buttonSoundG_SHARPOut==true){this.playSoundG_SHARPHoverOut()}
+				if (this.buttonSoundA_SHARPOut==true){this.playSoundA_SHARPHoverOut()}
+				}
+			}
+			else
+			{
+			if (this.keyA.isDown==true)
+				{
+				if (this.buttonSoundC.tint!=0x808080){this.buttonSoundC.tint=0x808080;this.myMusicPlayer = this.add.audio("soundC");this.myMusicPlayer.play()}
+				}
+			else if (this.keyA.isUp==true)
+				{
+				this.playSoundCHoverOut();
+				}
+
+			if (this.keyS.isDown==true)
+				{
+				if (this.buttonSoundD.tint!=0x808080){this.buttonSoundD.tint=0x808080;this.myMusicPlayer = this.add.audio("soundD");this.myMusicPlayer.play()}
+				}
+			else if (this.keyS.isUp==true)
+				{
+				this.playSoundDHoverOut();
+				}
+
+			if (this.keyD.isDown==true)
+				{
+				if (this.buttonSoundE.tint!=0x808080){this.buttonSoundE.tint=0x808080;this.myMusicPlayer = this.add.audio("soundE");this.myMusicPlayer.play()}
+				}
+			else if (this.keyD.isUp==true)
+				{
+				this.playSoundEHoverOut();
+				}
+
+			if (this.keyF.isDown==true)
+				{
+				if (this.buttonSoundF.tint!=0x808080){this.buttonSoundF.tint=0x808080;this.myMusicPlayer = this.add.audio("soundF");this.myMusicPlayer.play()}
+				}
+			else if (this.keyF.isUp==true)
+				{
+				this.playSoundFHoverOut();
+				}
+
+			if (this.keyG.isDown==true)
+				{
+				if (this.buttonSoundG.tint!=0x808080){this.buttonSoundG.tint=0x808080;this.myMusicPlayer = this.add.audio("soundG");this.myMusicPlayer.play()}
+				}
+			else if (this.keyG.isUp==true)
+				{
+				this.playSoundGHoverOut();
+				}
+
+			if (this.keyH.isDown==true)
+				{
+				if (this.buttonSoundA.tint!=0x808080){this.buttonSoundA.tint=0x808080;this.myMusicPlayer = this.add.audio("soundA");this.myMusicPlayer.play()}
+				}
+			else if (this.keyH.isUp==true)
+				{
+				this.playSoundAHoverOut();
+				}
+
+			if (this.keyJ.isDown==true)
+				{
+				if (this.buttonSoundB.tint!=0x808080){this.buttonSoundB.tint=0x808080;this.myMusicPlayer = this.add.audio("soundB");this.myMusicPlayer.play()}
+				}
+			else if (this.keyJ.isUp==true)
+				{
+				this.playSoundBHoverOut();
+				}
+
+			if (this.keyW.isDown==true)
+				{
+				if (this.buttonSoundC_SHARP.tint!=0x808080){this.buttonSoundC_SHARP.tint=0x808080;this.myMusicPlayer = this.add.audio("soundC_SHARP");this.myMusicPlayer.play()}
+				}
+			else if (this.keyW.isUp==true)
+				{
+				this.playSoundC_SHARPHoverOut();
+				}
+
+			if (this.keyE.isDown==true)
+				{
+				if (this.buttonSoundD_SHARP.tint!=0x808080){this.buttonSoundD_SHARP.tint=0x808080;this.myMusicPlayer = this.add.audio("soundD_SHARP");this.myMusicPlayer.play()}
+				}
+			else if (this.keyE.isUp==true)
+				{
+				this.playSoundD_SHARPHoverOut();
+				}
+
+			if (this.keyT.isDown==true)
+				{
+				if (this.buttonSoundF_SHARP.tint!=0x808080){this.buttonSoundF_SHARP.tint=0x808080;this.myMusicPlayer = this.add.audio("soundF_SHARP");this.myMusicPlayer.play()}
+				}
+			else if (this.keyT.isUp==true)
+				{
+				this.playSoundF_SHARPHoverOut();
+				}
+
+			if (this.keyY.isDown==true)
+				{
+				if (this.buttonSoundG_SHARP.tint!=0x808080){this.buttonSoundG_SHARP.tint=0x808080;this.myMusicPlayer = this.add.audio("soundG_SHARP");this.myMusicPlayer.play()}
+				}
+			else if (this.keyY.isUp==true)
+				{
+				this.playSoundG_SHARPHoverOut();
+				}
+
+			if (this.keyU.isDown==true)
+				{
+				if (this.buttonSoundA_SHARP.tint!=0x808080){this.buttonSoundA_SHARP.tint=0x808080;this.myMusicPlayer = this.add.audio("soundA_SHARP");this.myMusicPlayer.play()}
+				}
+			else if (this.keyU.isUp==true)
+				{
+				this.playSoundA_SHARPHoverOut();
+				}
 			}
 		},
 
@@ -242,101 +368,134 @@ MiniPiano.Game.prototype = {
 		game.input.onTap.addOnce(game.sound.context.resume, game.sound.context);
 		game.input.onDown.addOnce(game.sound.context.resume, game.sound.context);
 
+		// REGISTERING THE 'A', 'S', 'D', 'F', 'G', 'H', 'J', 'W', 'E', 'T', 'Y', 'U' KEYS
+		this.keyA = game.input.keyboard.addKey(Phaser.Keyboard.A);
+		this.keyS = game.input.keyboard.addKey(Phaser.Keyboard.S);
+		this.keyD = game.input.keyboard.addKey(Phaser.Keyboard.D);
+		this.keyF = game.input.keyboard.addKey(Phaser.Keyboard.F);
+		this.keyG = game.input.keyboard.addKey(Phaser.Keyboard.G);
+		this.keyH = game.input.keyboard.addKey(Phaser.Keyboard.H);
+		this.keyJ = game.input.keyboard.addKey(Phaser.Keyboard.J);
+		this.keyW = game.input.keyboard.addKey(Phaser.Keyboard.W);
+		this.keyE = game.input.keyboard.addKey(Phaser.Keyboard.E);
+		this.keyT = game.input.keyboard.addKey(Phaser.Keyboard.T);
+		this.keyY = game.input.keyboard.addKey(Phaser.Keyboard.Y);
+		this.keyU = game.input.keyboard.addKey(Phaser.Keyboard.U);
+
 		this.buttonSoundC = this.add.button(0, 0, "imageKey1", null, this, 2, 1, 0);
-		this.buttonSoundC.input.pixelPerfectOver = true;
-		this.buttonSoundC.input.pixelPerfectClick = true;
-		this.buttonSoundC.onInputOver.add(this.playSoundC, this);
-		this.buttonSoundC.onInputDown.add(this.playSoundCDown, this);
-		this.buttonSoundC.onInputUp.add(this.playSoundCHoverOut, this);
-		this.buttonSoundC.onInputOut.add(this.playSoundCHoverOut, this);
-
 		this.buttonSoundD = this.add.button(85, 0, "imageKey2", null, this, 2, 1, 0);
-		this.buttonSoundD.input.pixelPerfectOver = true;
-		this.buttonSoundD.input.pixelPerfectClick = true;
-		this.buttonSoundD.onInputOver.add(this.playSoundD, this);
-		this.buttonSoundD.onInputDown.add(this.playSoundDDown, this);
-		this.buttonSoundD.onInputUp.add(this.playSoundDHoverOut, this);
-		this.buttonSoundD.onInputOut.add(this.playSoundDHoverOut, this);
-
 		this.buttonSoundE = this.add.button(171, 0, "imageKey4", null, this, 2, 1, 0);
-		this.buttonSoundE.input.pixelPerfectOver = true;
-		this.buttonSoundE.input.pixelPerfectClick = true;
-		this.buttonSoundE.onInputOver.add(this.playSoundE, this);
-		this.buttonSoundE.onInputDown.add(this.playSoundEDown, this);
-		this.buttonSoundE.onInputUp.add(this.playSoundEHoverOut, this);
-		this.buttonSoundE.onInputOut.add(this.playSoundEHoverOut, this);
-
 		this.buttonSoundF = this.add.button(256, 0, "imageKey1", null, this, 2, 1, 0);
-		this.buttonSoundF.input.pixelPerfectOver = true;
-		this.buttonSoundF.input.pixelPerfectClick = true;
-		this.buttonSoundF.onInputOver.add(this.playSoundF, this);
-		this.buttonSoundF.onInputDown.add(this.playSoundFDown, this);
-		this.buttonSoundF.onInputUp.add(this.playSoundFHoverOut, this);
-		this.buttonSoundF.onInputOut.add(this.playSoundFHoverOut, this);
-
 		this.buttonSoundG = this.add.button(341, 0, "imageKey3", null, this, 2, 1, 0);
-		this.buttonSoundG.input.pixelPerfectOver = true;
-		this.buttonSoundG.input.pixelPerfectClick = true;
-		this.buttonSoundG.onInputOver.add(this.playSoundG, this);
-		this.buttonSoundG.onInputDown.add(this.playSoundGDown, this);
-		this.buttonSoundG.onInputUp.add(this.playSoundGHoverOut, this);
-		this.buttonSoundG.onInputOut.add(this.playSoundGHoverOut, this);
-
 		this.buttonSoundA = this.add.button(427, 0, "imageKey2", null, this, 2, 1, 0);
-		this.buttonSoundA.input.pixelPerfectOver = true;
-		this.buttonSoundA.input.pixelPerfectClick = true;
-		this.buttonSoundA.onInputOver.add(this.playSoundA, this);
-		this.buttonSoundA.onInputDown.add(this.playSoundADown, this);
-		this.buttonSoundA.onInputUp.add(this.playSoundAHoverOut, this);
-		this.buttonSoundA.onInputOut.add(this.playSoundAHoverOut, this);
-
 		this.buttonSoundB = this.add.button(513, 0, "imageKey4", null, this, 2, 1, 0);
-		this.buttonSoundB.input.pixelPerfectOver = true;
-		this.buttonSoundB.input.pixelPerfectClick = true;
-		this.buttonSoundB.onInputOver.add(this.playSoundB, this);
-		this.buttonSoundB.onInputDown.add(this.playSoundBDown, this);
-		this.buttonSoundB.onInputUp.add(this.playSoundBHoverOut, this);
-		this.buttonSoundB.onInputOut.add(this.playSoundBHoverOut, this);
-
 		this.buttonSoundC_SHARP = this.add.button(60, 0, "imageKeySharp", null, this, 2, 1, 0);
-		this.buttonSoundC_SHARP.input.pixelPerfectOver = true;
-		this.buttonSoundC_SHARP.input.pixelPerfectClick = true;
-		this.buttonSoundC_SHARP.onInputOver.add(this.playSoundC_SHARP, this);
-		this.buttonSoundC_SHARP.onInputDown.add(this.playSoundC_SHARPDown, this);
-		this.buttonSoundC_SHARP.onInputUp.add(this.playSoundC_SHARPHoverOut, this);
-		this.buttonSoundC_SHARP.onInputOut.add(this.playSoundC_SHARPHoverOut, this);
-
 		this.buttonSoundD_SHARP = this.add.button(151, 0, "imageKeySharp", null, this, 2, 1, 0);
-		this.buttonSoundD_SHARP.input.pixelPerfectOver = true;
-		this.buttonSoundD_SHARP.input.pixelPerfectClick = true;
-		this.buttonSoundD_SHARP.onInputOver.add(this.playSoundD_SHARP, this);
-		this.buttonSoundD_SHARP.onInputDown.add(this.playSoundD_SHARP, this);
-		this.buttonSoundD_SHARP.onInputUp.add(this.playSoundD_SHARPHoverOut, this);
-		this.buttonSoundD_SHARP.onInputOut.add(this.playSoundD_SHARPHoverOut, this);
-
 		this.buttonSoundF_SHARP = this.add.button(316, 0, "imageKeySharp", null, this, 2, 1, 0);
-		this.buttonSoundF_SHARP.input.pixelPerfectOver = true;
-		this.buttonSoundF_SHARP.input.pixelPerfectClick = true;
-		this.buttonSoundF_SHARP.onInputOver.add(this.playSoundF_SHARP, this);
-		this.buttonSoundF_SHARP.onInputDown.add(this.playSoundF_SHARP, this);
-		this.buttonSoundF_SHARP.onInputUp.add(this.playSoundF_SHARPHoverOut, this);
-		this.buttonSoundF_SHARP.onInputOut.add(this.playSoundF_SHARPHoverOut, this);
-
 		this.buttonSoundG_SHARP = this.add.button(402, 0, "imageKeySharp", null, this, 2, 1, 0);
-		this.buttonSoundG_SHARP.input.pixelPerfectOver = true;
-		this.buttonSoundG_SHARP.input.pixelPerfectClick = true;
-		this.buttonSoundG_SHARP.onInputOver.add(this.playSoundG_SHARP, this);
-		this.buttonSoundG_SHARP.onInputDown.add(this.playSoundG_SHARP, this);
-		this.buttonSoundG_SHARP.onInputUp.add(this.playSoundG_SHARPHoverOut, this);
-		this.buttonSoundG_SHARP.onInputOut.add(this.playSoundG_SHARPHoverOut, this);
-
 		this.buttonSoundA_SHARP = this.add.button(493, 0, "imageKeySharp", null, this, 2, 1, 0);
-		this.buttonSoundA_SHARP.input.pixelPerfectOver = true;
-		this.buttonSoundA_SHARP.input.pixelPerfectClick = true;
-		this.buttonSoundA_SHARP.onInputOver.add(this.playSoundA_SHARP, this);
-		this.buttonSoundA_SHARP.onInputDown.add(this.playSoundA_SHARP, this);
-		this.buttonSoundA_SHARP.onInputUp.add(this.playSoundA_SHARPHoverOut, this);
-		this.buttonSoundA_SHARP.onInputOut.add(this.playSoundA_SHARPHoverOut, this);
+
+		if (isMobileDeviceChecker==true)
+			{
+			this.buttonSoundC.input.pixelPerfectOver = true;
+			this.buttonSoundC.input.pixelPerfectClick = true;
+			this.buttonSoundC.onInputOver.add(this.playSoundC, this);
+			this.buttonSoundC.onInputDown.add(this.playSoundCDown, this);
+			this.buttonSoundC.onInputUp.add(this.playSoundCHoverOut, this);
+			this.buttonSoundC.onInputOut.add(this.playSoundCHoverOut, this);
+
+			this.buttonSoundD.input.pixelPerfectOver = true;
+			this.buttonSoundD.input.pixelPerfectClick = true;
+			this.buttonSoundD.onInputOver.add(this.playSoundD, this);
+			this.buttonSoundD.onInputDown.add(this.playSoundDDown, this);
+			this.buttonSoundD.onInputUp.add(this.playSoundDHoverOut, this);
+			this.buttonSoundD.onInputOut.add(this.playSoundDHoverOut, this);
+
+			this.buttonSoundE.input.pixelPerfectOver = true;
+			this.buttonSoundE.input.pixelPerfectClick = true;
+			this.buttonSoundE.onInputOver.add(this.playSoundE, this);
+			this.buttonSoundE.onInputDown.add(this.playSoundEDown, this);
+			this.buttonSoundE.onInputUp.add(this.playSoundEHoverOut, this);
+			this.buttonSoundE.onInputOut.add(this.playSoundEHoverOut, this);
+
+			this.buttonSoundF.input.pixelPerfectOver = true;
+			this.buttonSoundF.input.pixelPerfectClick = true;
+			this.buttonSoundF.onInputOver.add(this.playSoundF, this);
+			this.buttonSoundF.onInputDown.add(this.playSoundFDown, this);
+			this.buttonSoundF.onInputUp.add(this.playSoundFHoverOut, this);
+			this.buttonSoundF.onInputOut.add(this.playSoundFHoverOut, this);
+
+			this.buttonSoundG.input.pixelPerfectOver = true;
+			this.buttonSoundG.input.pixelPerfectClick = true;
+			this.buttonSoundG.onInputOver.add(this.playSoundG, this);
+			this.buttonSoundG.onInputDown.add(this.playSoundGDown, this);
+			this.buttonSoundG.onInputUp.add(this.playSoundGHoverOut, this);
+			this.buttonSoundG.onInputOut.add(this.playSoundGHoverOut, this);
+
+			this.buttonSoundA.input.pixelPerfectOver = true;
+			this.buttonSoundA.input.pixelPerfectClick = true;
+			this.buttonSoundA.onInputOver.add(this.playSoundA, this);
+			this.buttonSoundA.onInputDown.add(this.playSoundADown, this);
+			this.buttonSoundA.onInputUp.add(this.playSoundAHoverOut, this);
+			this.buttonSoundA.onInputOut.add(this.playSoundAHoverOut, this);
+
+			this.buttonSoundB.input.pixelPerfectOver = true;
+			this.buttonSoundB.input.pixelPerfectClick = true;
+			this.buttonSoundB.onInputOver.add(this.playSoundB, this);
+			this.buttonSoundB.onInputDown.add(this.playSoundBDown, this);
+			this.buttonSoundB.onInputUp.add(this.playSoundBHoverOut, this);
+			this.buttonSoundB.onInputOut.add(this.playSoundBHoverOut, this);
+
+			this.buttonSoundC_SHARP.input.pixelPerfectOver = true;
+			this.buttonSoundC_SHARP.input.pixelPerfectClick = true;
+			this.buttonSoundC_SHARP.onInputOver.add(this.playSoundC_SHARP, this);
+			this.buttonSoundC_SHARP.onInputDown.add(this.playSoundC_SHARPDown, this);
+			this.buttonSoundC_SHARP.onInputUp.add(this.playSoundC_SHARPHoverOut, this);
+			this.buttonSoundC_SHARP.onInputOut.add(this.playSoundC_SHARPHoverOut, this);
+
+			this.buttonSoundD_SHARP.input.pixelPerfectOver = true;
+			this.buttonSoundD_SHARP.input.pixelPerfectClick = true;
+			this.buttonSoundD_SHARP.onInputOver.add(this.playSoundD_SHARP, this);
+			this.buttonSoundD_SHARP.onInputDown.add(this.playSoundD_SHARP, this);
+			this.buttonSoundD_SHARP.onInputUp.add(this.playSoundD_SHARPHoverOut, this);
+			this.buttonSoundD_SHARP.onInputOut.add(this.playSoundD_SHARPHoverOut, this);
+
+			this.buttonSoundF_SHARP.input.pixelPerfectOver = true;
+			this.buttonSoundF_SHARP.input.pixelPerfectClick = true;
+			this.buttonSoundF_SHARP.onInputOver.add(this.playSoundF_SHARP, this);
+			this.buttonSoundF_SHARP.onInputDown.add(this.playSoundF_SHARP, this);
+			this.buttonSoundF_SHARP.onInputUp.add(this.playSoundF_SHARPHoverOut, this);
+			this.buttonSoundF_SHARP.onInputOut.add(this.playSoundF_SHARPHoverOut, this);
+
+			this.buttonSoundG_SHARP.input.pixelPerfectOver = true;
+			this.buttonSoundG_SHARP.input.pixelPerfectClick = true;
+			this.buttonSoundG_SHARP.onInputOver.add(this.playSoundG_SHARP, this);
+			this.buttonSoundG_SHARP.onInputDown.add(this.playSoundG_SHARP, this);
+			this.buttonSoundG_SHARP.onInputUp.add(this.playSoundG_SHARPHoverOut, this);
+			this.buttonSoundG_SHARP.onInputOut.add(this.playSoundG_SHARPHoverOut, this);
+
+			this.buttonSoundA_SHARP.input.pixelPerfectOver = true;
+			this.buttonSoundA_SHARP.input.pixelPerfectClick = true;
+			this.buttonSoundA_SHARP.onInputOver.add(this.playSoundA_SHARP, this);
+			this.buttonSoundA_SHARP.onInputDown.add(this.playSoundA_SHARP, this);
+			this.buttonSoundA_SHARP.onInputUp.add(this.playSoundA_SHARPHoverOut, this);
+			this.buttonSoundA_SHARP.onInputOut.add(this.playSoundA_SHARPHoverOut, this);
+			}
+			else
+			{
+			this.buttonSoundC.inputEnabled = false;
+			this.buttonSoundD.inputEnabled = false;
+			this.buttonSoundE.inputEnabled = false;
+			this.buttonSoundF.inputEnabled = false;
+			this.buttonSoundG.inputEnabled = false;
+			this.buttonSoundA.inputEnabled = false;
+			this.buttonSoundB.inputEnabled = false;
+			this.buttonSoundC_SHARP.inputEnabled = false;
+			this.buttonSoundD_SHARP.inputEnabled = false;
+			this.buttonSoundF_SHARP.inputEnabled = false;
+			this.buttonSoundG_SHARP.inputEnabled = false;
+			this.buttonSoundA_SHARP.inputEnabled = false;
+			}
 		},
 
 	playSoundC: function(){if(game.input.activePointer.isDown==true){this.buttonSoundC.tint = 0x808080;this.myMusicPlayer = this.add.audio("soundC");this.myMusicPlayer.play()}},
