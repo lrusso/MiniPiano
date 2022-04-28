@@ -8,10 +8,6 @@ MiniPiano developed in JavaScript.
 
 https://lrusso.github.io/MiniPiano/MiniPiano.htm
 
-## Keys to be used in desktop devices:
-
-A, S, D, F, G, H, J, W, E, T, Y and U.
-
 ## Main diferences with the original version:
 
 * Keyboard input implementation.
