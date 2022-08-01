@@ -192,8 +192,9 @@ MiniPiano.Menu.prototype = {
 		this.menuSubtitle = null;
 		this.menuPlayButton = null;
 		this.menuPlayButtonIcon = null;
-		this.menuSoundButton = null;
-		this.menuSoundButtonIcon = null;
+		this.clickTimestamp = null;
+		this.clickPositionX = null;
+		this.clickPositionY = null;
 		},
 
 	create: function()
@@ -215,11 +216,13 @@ MiniPiano.Menu.prototype = {
 		// ADDING THE PLAY BUTTON
 		this.menuPlayButton = game.add.button(0, 380, "imageMenuButton", null, this, 2, 1, 0);
 		this.menuPlayButton.position.x = game.width / 2 - this.menuPlayButton.width / 2;
+		this.menuPlayButton.onInputDown.add(function(){if(this.clickTimestamp==null){this.clickTimestamp=this.getCurrentTime();this.clickPositionX=this.game.input.activePointer.position.x;this.clickPositionY=this.game.input.activePointer.position.y;}},this);
 		this.menuPlayButton.onInputUp.add(this.playGame, this);
 
 		// ADDING THE PLAY BUTTON ICON
 		this.menuPlayButtonIcon = game.add.button(0, this.menuPlayButton.position.y + 19, "imageMenuPlay", null, this, 2, 1, 0);
 		this.menuPlayButtonIcon.position.x = this.menuPlayButton.position.x + this.menuPlayButton.width / 2 - this.menuPlayButtonIcon.width / 2 + 2;
+		this.menuPlayButtonIcon.onInputDown.add(function(){if(this.clickTimestamp==null){this.clickTimestamp=this.getCurrentTime();this.clickPositionX=this.game.input.activePointer.position.x;this.clickPositionY=this.game.input.activePointer.position.y;}},this);
 		this.menuPlayButtonIcon.onInputUp.add(this.playGame, this);
 
 		// ADDING THE VERSION LABEL SHADOW
@@ -236,8 +239,18 @@ MiniPiano.Menu.prototype = {
 
 	playGame: function()
 		{
+		// REJECTING ANY SLIDE AND LONG PRESS EVENT - BUGFIX FOR SAFARI ON IOS FOR ENABLING THE AUDIO CONTEXT
+		if (Math.abs(this.game.input.activePointer.position.x-this.clickPositionX)>=25){this.clickTimestamp=null;return;}
+		if (Math.abs(this.game.input.activePointer.position.y-this.clickPositionY)>=25){this.clickTimestamp=null;return;}
+		if (this.getCurrentTime()-this.clickTimestamp>=500){this.clickTimestamp=null;return;}
+
 		// LAUNCHING THE GAME
 		game.state.start("MiniPiano.Game", Phaser.Plugin.StateTransition.Out.SlideLeft);
+		},
+
+	getCurrentTime: function()
+		{
+		return window.performance && window.performance.now && window.performance.timing && window.performance.timing.navigationStart ? window.performance.now() + window.performance.timing.navigationStart : Date.now();
 		}
 	};
 
